@@ -1,0 +1,117 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <div class="seccion-hero">
+      <div class="container">
+        <header class="w-[100%] px-4 py-4 mb-32">
+          <h2 class="text-white text-3xl font-bold">
+            Reto Increible El gran cambio
+          </h2>
+        </header>
+        <div
+          class="w-[45%] px-4 flex flex-col gap-8 justify-center items-start"
+        >
+          <h2 class="text-white text-5xl font-bold">El llamado a la accion</h2>
+          <p class="text-white text-pretty text-lg">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
+            temporibus reiciendis hic quibusdam quoLorem ipsum dolor sit amet,
+            consectetur adipisicing elit. Magnam temporibus reiciendis hic
+            quibusdam quo
+          </p>
+          <button
+            type="button"
+            class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-10 py-3 text-center me-2 mb-2 hover:scale-105"
+            >LLEGATE</button
+          >
+        </div>
+        <div class="px-4 mt-4 flex flex-col gap-4">
+          <h3 class="text-white text-5xl font-bold">Comienza en</h3>
+          <span class="text-white text-2xl font-bold" id="cuenta-regresiva"
+            >00:00:00:00</span
+          >
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const endDate = new Date("2024-04-21T23:59:00").getTime(); // Ajusta esta fecha a tu evento
+
+    const countdownFunction = () => {
+      const now = new Date().getTime();
+      const timeleft = endDate - now;
+
+      const days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+      document.querySelector("#cuenta-regresiva").innerHTML =
+        days +
+        " dias " +
+        hours +
+        " horas " +
+        minutes +
+        " minutos " +
+        seconds +
+        " segundos";
+
+      if (timeleft < 0) {
+        clearInterval(timer);
+        document.querySelector(".cuenta-regresiva").innerHTML =
+          "El evento ha comenzado";
+      }
+    };
+
+    const timer = setInterval(countdownFunction, 1000);
+  });
+</script>
+
+<style>
+  /* .seccion-hero{
+	background-image: url('bg-hero.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	place-content: center;
+	
+} */
+  .seccion-hero {
+    background-image: url("bg-hero.jpg");
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    display: flex;
+    place-content: center;
+    position: relative;
+    overflow: hidden;
+    height: 90vh; /* Asegúrate de definir una altura, ajusta según necesites */
+  }
+
+  .seccion-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    pointer-events: none; /* Evita que el pseudo-elemento intercepte interacciones del usuario */
+  }
+
+  .seccion-hero * {
+    position: relative; /* Asegúrate de que el contenido sobre el fondo no esté afectado por el gradiente */
+  }
+</style>
