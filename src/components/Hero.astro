@@ -1,42 +1,48 @@
 <seccion class="seccion-hero">
-  <div class="container flex flex-col justify-between h-[100%] p-4">
-    <header class="w-[100%]">
+  <div
+    class="container flex flex-col justify-around items-center text-center h-[100%] p-4"
+  >
+    <header class="w-[100%] text-center flex flex-col">
       <h2 class="text-white font-bold text-3xl lg:text-5xl">
-        Reto Increible Con <a
-          class="animated-title"
-          href="https://bento.me/adrianatovarfit"
-          target="_blank">Adriana Tovar</a
-        >
+        Reto Increible Con
       </h2>
+      <a
+        class="animated-title font-bold text-5xl lg:text-7xl mt-8 lg:mt-20"
+        href="https://bento.me/adrianatovarfit"
+        target="_blank">Adriana Tovar</a
+      >
     </header>
 
-    <div class="flex flex-col gap-7 lg:gap-6 lg:mt-8 w-[100%] lg:w-[45%]">
-      <h2 class="text-white font-bold text-4xl lg:text-6xl">
+    <section class="flex flex-col items-center lg:gap-6 lg:mt-8 w-[100%]">
+      <h2 class="text-white font-bold mb-4 text-3xl lg:text-6xl">
         Empieza nuestro reto
       </h2>
-      <p class="text-white text-pretty text-base lg:text-lg">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
-        temporibus reiciendis hic quibusdam quoLorem ipsum dolor sit amet,
-        consectetur adipisicing elit. Magnam temporibus reiciendis hic quibusdam
-        quo
+      <p class="text-white text-pretty text-sm lg:text-lg lg:w-[50%]">
+        ¡Lánzate al desafío fitness de 30 días! Este reto está diseñado para
+        mejorar tu fuerza y salud, adaptándose a cualquier nivel de condición
+        física. Incluye ejercicios variados y consejos de nutrición para
+        optimizar tus resultados. Únete a nuestra comunidad y comparte tus
+        avances. Verás una notable transformación en tu bienestar y condición
+        física al finalizar. ¡Empieza hoy y descubre tu potencial!
       </p>
-      <button
+      <a
+        href="https://bento.me/adrianatovarfit"
         type="button"
-        class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-10 py-3 text-center me-2 mb-2 hover:scale-105 self-start
-        animate-wiggle animate-infinite"
-        >LLEGATE</button
+        class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 font-bold rounded-lg text-lg px-10 py-3 text-center mt-4 me-2 mb-2 hover:scale-105
+        animate-wiggle animate-infinite self-center"
+        >Unete YA...!!</a
       >
-    </div>
+    </section>
 
-    <div class="flex flex-col mb-10 gap-6 lg:gap-6">
+    <footer class="w-[100%] flex flex-col mb-10 gap-6 lg:gap-6">
       <h3 class="text-white font-bold animated-title text-4xl lg:text-5xl">
         Comienza en
       </h3>
       <span
-        class="text-white text-lg lg:text-2xl font-bold"
+        class="text-white text-2xl lg:text-2xl font-bold"
         id="cuenta-regresiva">Cargando . . . . .</span
       >
-    </div>
+    </footer>
   </div>
 </seccion>
 
@@ -66,14 +72,7 @@
         }
       } else {
         document.querySelector("#cuenta-regresiva").innerHTML =
-          days +
-          " dias " +
-          hours +
-          " horas " +
-          minutes +
-          " minutos " +
-          seconds +
-          " segundos";
+          days + " D : " + hours + " H : " + minutes + " M : " + seconds + " S";
 
         if (timeleft < 0) {
           clearInterval(timer);
@@ -88,15 +87,6 @@
 </script>
 
 <style>
-  /* .seccion-hero{
-	background-image: url('bg-hero.jpg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	display: flex;
-	place-content: center;
-	
-} */
   .seccion-hero {
     background-image: url("https://raw.githubusercontent.com/danuruiz7/landing-reto-adri/main/public/bg-ori.webp");
     background-position: center;
