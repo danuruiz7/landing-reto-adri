@@ -1,0 +1,173 @@
+<seccion class="seccion-hero">
+  <div class="container flex flex-col justify-between h-[100%] p-4">
+    <header class="w-[100%]">
+      <h2 class="text-white font-bold text-3xl lg:text-3xl">
+        Reto Increible Con <a
+          class="animated-title"
+          href="https://www.instagram.com/adrianatovarfit/?hl=es"
+          target="_blank">Adriana Tovar</a
+        >
+      </h2>
+    </header>
+
+    <div class="flex flex-col gap-7 lg:gap-6 lg:mt-8 w-[100%] lg:w-[45%]">
+      <h2 class="text-white font-bold text-4xl lg:text-6xl">
+        Empieza nuestro reto
+      </h2>
+      <p class="text-white text-pretty text-base lg:text-lg">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
+        temporibus reiciendis hic quibusdam quoLorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Magnam temporibus reiciendis hic quibusdam
+        quo
+      </p>
+      <button
+        type="button"
+        class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-10 py-3 text-center me-2 mb-2 hover:scale-105 self-start
+        animate-wiggle animate-infinite"
+        >LLEGATE</button
+      >
+    </div>
+
+    <div class="flex flex-col mb-10 gap-6 lg:gap-6">
+      <h3 class="text-white font-bold animated-title text-4xl lg:text-5xl">
+        Comienza en
+      </h3>
+      <span
+        class="text-white text-lg lg:text-2xl font-bold"
+        id="cuenta-regresiva">00:00:00:00</span
+      >
+    </div>
+  </div>
+</seccion>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const endDate = new Date("2024-04-30T23:59:00").getTime(); // Ajusta esta fecha a tu evento
+
+    const countdownFunction = () => {
+      const now = new Date().getTime();
+      const timeleft = endDate - now;
+
+      const days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+      if (days <= 0) {
+        document.querySelector("#cuenta-regresiva").innerHTML =
+          hours + " horas " + minutes + " minutos " + seconds + " segundos";
+
+        if (timeleft < 0) {
+          clearInterval(timer);
+          document.querySelector(".cuenta-regresiva").innerHTML =
+            "El evento ha comenzado";
+        }
+      } else {
+        document.querySelector("#cuenta-regresiva").innerHTML =
+          days +
+          " dias " +
+          hours +
+          " horas " +
+          minutes +
+          " minutos " +
+          seconds +
+          " segundos";
+
+        if (timeleft < 0) {
+          clearInterval(timer);
+          document.querySelector(".cuenta-regresiva").innerHTML =
+            "El evento ha comenzado";
+        }
+      }
+    };
+
+    const timer = setInterval(countdownFunction, 1000);
+  });
+</script>
+
+<style>
+  /* .seccion-hero{
+	background-image: url('bg-hero.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	place-content: center;
+	
+} */
+  .seccion-hero {
+    background-image: url("https://raw.githubusercontent.com/danuruiz7/landing-reto-adri/main/public/bg-ori.jpg");
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    display: flex;
+    place-content: center;
+    position: relative;
+    overflow: hidden;
+    height: 100dvh; /* Asegúrate de definir una altura, ajusta según necesites */
+  }
+
+  .seccion-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    pointer-events: none; /* Evita que el pseudo-elemento intercepte interacciones del usuario */
+  }
+
+  .seccion-hero * {
+    position: relative; /* Asegúrate de que el contenido sobre el fondo no esté afectado por el gradiente */
+  }
+
+  .animated-title {
+    background-image: linear-gradient(to right, #0073e6, #10f26e);
+    background-clip: text;
+    color: transparent;
+    animation: textAnimation 3s linear infinite; /* Nueva animación para el color del texto */
+  }
+
+  @keyframes textAnimation {
+    0% {
+      color: transparent;
+    }
+    25% {
+      color: #ffcc00; /* Cambia este valor al color que desees en el 25% de la animación */
+    }
+    50% {
+      color: #4caf50; /* Cambia este valor al color que desees en el 50% de la animación */
+    }
+    75% {
+      color: #2196f3; /* Cambia este valor al color que desees en el 75% de la animación */
+    }
+    100% {
+      color: transparent;
+    }
+  }
+
+  @keyframes gradientAnimation {
+    0% {
+      clip-path: polygon(0 0, 0 0, 100% 100%, 0% 100%);
+    }
+    25% {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    50% {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    75% {
+      clip-path: polygon(0 0, 100% 0, 0% 100%, 0% 100%);
+    }
+    100% {
+      clip-path: polygon(0 0, 100% 0, 0% 100%, 0% 100%);
+    }
+  }
+</style>
